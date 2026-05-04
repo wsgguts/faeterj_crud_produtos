@@ -1,0 +1,24 @@
+{
+  "name": "faeterj_crud_produtos",
+  "version": "1.0.0",
+  "description": "CRUD de produtos de supermercados criado em sala de aula, na disciplina de Algoritimos 2 na FAETERJ BM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsgguts/faeterj_crud_produtos.git"
+  },
+  "author": "Willian de Souza Gomes",
+  "type": "module",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wsgguts/faeterj_crud_produtos/issues"
+  },
+  "homepage": "https://github.com/wsgguts/faeterj_crud_produtos#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  }
+}
