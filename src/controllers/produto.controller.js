@@ -10,6 +10,18 @@ async function findAllProdutoController(request, response){
     }
 }
 
+async function createProdutoController(request, response) {
+    const novoProduto = request.body;
+
+    try {
+        const produto = await produtoService.createProdutoService(novoProduto);
+        response.status(201).send(produto)
+    } catch (error) {
+        response.status(404).send(error.message)
+    }
+}
+
 export default {
-    findAllProdutoController
+    findAllProdutoController,
+    createProdutoController
 }

@@ -1,0 +1,10 @@
+willian.gomes@aluno.faeterj-brm.faetec.rj.gov.br
+
+npm i
+
+git config --global user.name "Willian Guts"
+git config --global user.email "wsg.guts@gmail.com"
+
+Extesões:
+
+Thunder Client
