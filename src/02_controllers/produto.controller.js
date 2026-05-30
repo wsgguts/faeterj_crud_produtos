@@ -1,0 +1,18 @@
+//02 - produto.controller.js — o intermediário
+//Recebe o request e response do Express, chama o service e devolve a resposta HTTP.
+
+import produtoService from "../03_services/produto.service.js";
+import { response } from "express";
+
+async function findAllProdutoController(request, response) {
+    try {
+        const produtos = await produtoService.findAllProdutoService();  
+        response.status(200).send({produtos});
+    } catch (error) {
+        response.status(404).send(error.message);
+    }
+}
+
+export default {
+    findAllProdutoController
+}

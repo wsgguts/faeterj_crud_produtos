@@ -1,13 +1,11 @@
-import express from "express"
-import produtoRouter from "./src/routes/produto.routes.js";
-import produtoRouters from "./src/routes/produto.routes.js";
+import express from "express";
+import produtoRouters from "./src/routes/produto.routes.js"
 
 const app = express();
 
 app.use(express.json());
-app.use(produtoRouter);
+app.use(produtoRouters);
 
-app.listen(3000,() =>{
-    console.log("Servidor rodando na porta 3000...")
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000...")    
 });
-
