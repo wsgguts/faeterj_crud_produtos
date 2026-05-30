@@ -1,7 +1,7 @@
 //02 - produto.controller.js — o intermediário
 //Recebe o request e response do Express, chama o service e devolve a resposta HTTP.
 
-import produtoService from "../services/produto.service.js";
+import produtoService from "../03_services/produto.service.js";
 import { response } from "express";
 
 async function findAllProdutoController(request, response){

@@ -1,7 +1,7 @@
 //04 - produto.repository.js — o acesso ao banco
 //Só ele faz queries SQL. O resto do projeto não precisa saber como o banco funciona.
 
-import db from "../config/database.js";
+import db from "../05_config/database.js";
 
 db.run(`
     CREATE TABLE IF NOT EXISTS produto(
