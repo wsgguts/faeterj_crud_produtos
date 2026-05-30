@@ -1,14 +1,14 @@
 //04 - produto.repository.js — o acesso ao banco
 //Só ele faz queries SQL. O resto do projeto não precisa saber como o banco funciona.
 
-import db from "../05_config/database.js";
+import db from "../config/database.js";
 
 db.run(`
-    CREATE TABLE IF NOT EXISTS produto (
+    CREATE TABLE IF NOT EXISTS produto(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL UNIQUE,
         valor TEXT NOT NULL,
-        tipo TEXT NOT NULL
+        tipo TEXTNOT NULL
     )    
 `);
 
@@ -25,9 +25,34 @@ function findAllProdutoRepository() {
                 }
             }
         );
+    })
+}
+
+function createProdutoRepository(novoProduto){
+    return new Promise((resolve, reject) => {
+        const {
+            nome,
+            valor,
+            tipo
+        } = novoProduto;
+        db.run(
+            `INSERT INTO produto(nome, valor, tipo)
+            VALUES(?,?,?)`,
+            [nome, valor, tipo],
+            (error) => {
+                if(error) {
+                    reject(error);
+                }else {
+                    resolve({
+                        id: this.lastID
+                    });
+                }
+            } 
+        );
     });
 }
 
 export default {
-    findAllProdutoRepository
+    findAllProdutoRepository,
+    createProdutoRepository
 }
