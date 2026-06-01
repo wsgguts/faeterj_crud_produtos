@@ -13,6 +13,19 @@ async function findProdutoByIdService(id){
     return produto;
 }
 
+async function updateProdutodService(id, produtoAtualizado){
+    const produto = await produtoRepository.findProdutoByIdRepository(id)
+    if (!produto) {
+        throw new Error("Produto não encontrado!");
+    }
+    const produtoRetorno = await produtoRepository.updateProdutoRepository(id, produtoAtualizado)
+    if (!produtoRetorno) {
+        throw new Error("Erro ao atualizar o produto!");
+    } 
+    return produtoRetorno;
+}
+
+
 async function createProdutoService(novoProduto){
     const produto = await produtoRepository.createProdutoRepository(novoProduto);
     if (!produto) {
@@ -24,5 +37,6 @@ async function createProdutoService(novoProduto){
 export default {
     findAllProdutoService,
     createProdutoService,
-    findProdutoByIdService
+    findProdutoByIdService,
+    updateProdutodService
 }
