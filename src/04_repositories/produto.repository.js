@@ -28,6 +28,25 @@ function findAllProdutoRepository() {
     })
 }
 
+function findProdutoByIdRepository(id) {
+    return new Promise((resolve, reject) => {
+        db.get(
+            `SELECT
+             * 
+            FROM produto 
+            WHERE id = ?`,
+            [id],
+            (error, row) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(row);
+                }
+            }
+        );
+    })
+}
+
 function createProdutoRepository(novoProduto){
     return new Promise((resolve, reject) => {
         const {
@@ -54,5 +73,6 @@ function createProdutoRepository(novoProduto){
 
 export default {
     findAllProdutoRepository,
-    createProdutoRepository
+    createProdutoRepository,
+    findProdutoByIdRepository
 }
