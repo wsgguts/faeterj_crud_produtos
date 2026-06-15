@@ -31,8 +31,31 @@ async function createProdutoController(request, response) {
     }
 }
 
+async function updateProdutoController(request, response) {
+    const {id} = request.params;
+    const produtoAtualizado = request.body;
+    try {
+        const produto = await produtoService.updateProdutodService(id, produtoAtualizado);
+        response.status(200).send({produto});
+    }catch (error) {
+        response.status(404).send(error.message);
+    }
+}
+
+async function deleteProdutoController(request, response) {
+    const {id} = request.params;
+    try {
+        const retorno = await produtoService.deleteProdutodService(id);
+        response.status(200).send(retorno);
+    }catch (error) {
+        response.status(400).send(error.message);
+    }
+}
+
 export default {
     findAllProdutoController,
     createProdutoController,
-    findProdutoByIdController
+    findProdutoByIdController,
+    updateProdutoController,
+    deleteProdutoController
 }

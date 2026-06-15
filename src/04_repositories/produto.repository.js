@@ -56,8 +56,8 @@ function updateProdutoRepository(id, produto) {
         } = produto;
         db.run(
             `UPDATE produto
-            SET nome = ?
-                valor = ?
+            SET nome = ?,
+                valor = ?,
                 tipo = ?
             WHERE id = ?`,
             [nome, valor, tipo, id],
@@ -99,9 +99,31 @@ function createProdutoRepository(novoProduto){
     });
 }
 
+function deleteProdutoRepository(id) {
+    return new Promise((resolve, reject) => {
+            db.run(
+                `DELETE FROM produto
+                WHERE id = ?`,
+                [id],
+                (error) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve({
+                            message: "Produto excluído com sucesso."
+                        });
+                    }
+                }
+            );
+        }
+    );
+}
+
 export default {
     findAllProdutoRepository,
     createProdutoRepository,
     findProdutoByIdRepository,
-    updateProdutoRepository
+    updateProdutoRepository,
+    deleteProdutoRepository
+
 }
